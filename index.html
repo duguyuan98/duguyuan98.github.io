@@ -101,7 +101,7 @@
 
     <div id="yhBtn" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff ; font-size:20px    ">
         <p>💥宜Princess请点火💥</p>
-        <img style="width:64px;margin-bottom:36px " src="files/boom.png" >
+        <img style="width:100px;margin-bottom:36px " src="files/boom.png" >
     </div>
 
     <div class="image-container" style="z-index:999">
@@ -146,8 +146,9 @@
                 <div id="text" style="display:none;">春节将至 平安喜乐 愿 宜 万事如意🧨
 				<br>唯愿烟花像星辰 祝你所愿皆成真🧨
 				<br>来自 成 的祝福
-                <br>愿携手走完余生
-                <br>2025年1月24日 宜&成
+                <br>宜&成 相识于2025年1月22日, 至今已相识：<span id="daysPassed"></span>天
+                <br>祝愿能够携手走完余生
+                <br><span id="currentDay"></span> 宜&成
 			</div>
 				<div id="time" style="color: #fff;"></div>
                 <div class="type_words" id="contents" style="font-size:1.05rem;line-height:1.5rem;"></div>
@@ -396,7 +397,31 @@
 time()
 </script>
 	
- 
+<script>
+    // 设置过期日期
+    const expirationDate = new Date('2025-01-22');
+
+    // 获取当前日期
+    const currentDate = new Date();
+
+    // 计算两个日期之间的时间差（以毫秒为单位）
+    const timeDifference = currentDate - expirationDate;
+
+    // 将时间差转换为天数
+    const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+    // 显示已过去的天数
+    document.getElementById('daysPassed').textContent = daysPassed;
+
+    // 获取当前日期并以格式化字符串的形式显示
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}年${month}月${day}日`;
+    document.getElementById('currentDay').textContent = formattedDate;
+</script>
  
 </body>
 
